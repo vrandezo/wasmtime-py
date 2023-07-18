@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>wasmtime.bindgen.generated.imports.filesystem API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>wasmtime.bindgen.generated.imports.filesystem</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from ..imports import streams
+from ..types import Result
+from abc import abstractmethod
+from enum import Enum
+from typing import Protocol
+
+Descriptor = int
+Filesize = int
+OutputStream = streams.OutputStream
+class ErrorCode(Enum):
+    ACCESS = 0
+    WOULD_BLOCK = 1
+    ALREADY = 2
+    BAD_DESCRIPTOR = 3
+    BUSY = 4
+    DEADLOCK = 5
+    QUOTA = 6
+    EXIST = 7
+    FILE_TOO_LARGE = 8
+    ILLEGAL_BYTE_SEQUENCE = 9
+    IN_PROGRESS = 10
+    INTERRUPTED = 11
+    INVALID = 12
+    IO = 13
+    IS_DIRECTORY = 14
+    LOOP = 15
+    TOO_MANY_LINKS = 16
+    MESSAGE_SIZE = 17
+    NAME_TOO_LONG = 18
+    NO_DEVICE = 19
+    NO_ENTRY = 20
+    NO_LOCK = 21
+    INSUFFICIENT_MEMORY = 22
+    INSUFFICIENT_SPACE = 23
+    NOT_DIRECTORY = 24
+    NOT_EMPTY = 25
+    NOT_RECOVERABLE = 26
+    UNSUPPORTED = 27
+    NO_TTY = 28
+    NO_SUCH_DEVICE = 29
+    OVERFLOW = 30
+    NOT_PERMITTED = 31
+    PIPE = 32
+    READ_ONLY = 33
+    INVALID_SEEK = 34
+    TEXT_FILE_BUSY = 35
+    CROSS_DEVICE = 36
+
+class DescriptorType(Enum):
+    UNKNOWN = 0
+    BLOCK_DEVICE = 1
+    CHARACTER_DEVICE = 2
+    DIRECTORY = 3
+    FIFO = 4
+    SYMBOLIC_LINK = 5
+    REGULAR_FILE = 6
+    SOCKET = 7
+
+class Filesystem(Protocol):
+    @abstractmethod
+    def write_via_stream(self, this: Descriptor, offset: Filesize) -&gt; Result[OutputStream, ErrorCode]:
+        raise NotImplementedError
+    @abstractmethod
+    def append_via_stream(self, this: Descriptor) -&gt; Result[OutputStream, ErrorCode]:
+        raise NotImplementedError
+    @abstractmethod
+    def get_type(self, this: Descriptor) -&gt; Result[DescriptorType, ErrorCode]:
+        raise NotImplementedError
+    @abstractmethod
+    def drop_descriptor(self, this: Descriptor) -&gt; None:
+        raise NotImplementedError</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.DescriptorType"><code class="flex name class">
+<span>class <span class="ident">DescriptorType</span></span>
+<span>(</span><span>*args, **kwds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a collection of name/value pairs.</p>
+<p>Example enumeration:</p>
+<pre><code class="language-python-repl">&gt;&gt;&gt; class Color(Enum):
+...     RED = 1
+...     BLUE = 2
+...     GREEN = 3
+</code></pre>
+<p>Access them by:</p>
+<ul>
+<li>attribute access::</li>
+</ul>
+<pre><code class="language-python-repl">&gt;&gt;&gt; Color.RED
+&lt;Color.RED: 1&gt;
+</code></pre>
+<ul>
+<li>value lookup:</li>
+</ul>
+<pre><code class="language-python-repl">&gt;&gt;&gt; Color(1)
+&lt;Color.RED: 1&gt;
+</code></pre>
+<ul>
+<li>name lookup:</li>
+</ul>
+<pre><code class="language-python-repl">&gt;&gt;&gt; Color['RED']
+&lt;Color.RED: 1&gt;
+</code></pre>
+<p>Enumerations can be iterated over, and know how many members they have:</p>
+<pre><code class="language-python-repl">&gt;&gt;&gt; len(Color)
+3
+</code></pre>
+<pre><code class="language-python-repl">&gt;&gt;&gt; list(Color)
+[&lt;Color.RED: 1&gt;, &lt;Color.BLUE: 2&gt;, &lt;Color.GREEN: 3&gt;]
+</code></pre>
+<p>Methods can be added to enumerations, and members can have their own
+attributes &ndash; see the documentation for details.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DescriptorType(Enum):
+    UNKNOWN = 0
+    BLOCK_DEVICE = 1
+    CHARACTER_DEVICE = 2
+    DIRECTORY = 3
+    FIFO = 4
+    SYMBOLIC_LINK = 5
+    REGULAR_FILE = 6
+    SOCKET = 7</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.BLOCK_DEVICE"><code class="name">var <span class="ident">BLOCK_DEVICE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.CHARACTER_DEVICE"><code class="name">var <span class="ident">CHARACTER_DEVICE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.DIRECTORY"><code class="name">var <span class="ident">DIRECTORY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.FIFO"><code class="name">var <span class="ident">FIFO</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.REGULAR_FILE"><code class="name">var <span class="ident">REGULAR_FILE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.SOCKET"><code class="name">var <span class="ident">SOCKET</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.SYMBOLIC_LINK"><code class="name">var <span class="ident">SYMBOLIC_LINK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.UNKNOWN"><code class="name">var <span class="ident">UNKNOWN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode"><code class="flex name class">
+<span>class <span class="ident">ErrorCode</span></span>
+<span>(</span><span>*args, **kwds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a collection of name/value pairs.</p>
+<p>Example enumeration:</p>
+<pre><code class="language-python-repl">&gt;&gt;&gt; class Color(Enum):
+...     RED = 1
+...     BLUE = 2
+...     GREEN = 3
+</code></pre>
+<p>Access them by:</p>
+<ul>
+<li>attribute access::</li>
+</ul>
+<pre><code class="language-python-repl">&gt;&gt;&gt; Color.RED
+&lt;Color.RED: 1&gt;
+</code></pre>
+<ul>
+<li>value lookup:</li>
+</ul>
+<pre><code class="language-python-repl">&gt;&gt;&gt; Color(1)
+&lt;Color.RED: 1&gt;
+</code></pre>
+<ul>
+<li>name lookup:</li>
+</ul>
+<pre><code class="language-python-repl">&gt;&gt;&gt; Color['RED']
+&lt;Color.RED: 1&gt;
+</code></pre>
+<p>Enumerations can be iterated over, and know how many members they have:</p>
+<pre><code class="language-python-repl">&gt;&gt;&gt; len(Color)
+3
+</code></pre>
+<pre><code class="language-python-repl">&gt;&gt;&gt; list(Color)
+[&lt;Color.RED: 1&gt;, &lt;Color.BLUE: 2&gt;, &lt;Color.GREEN: 3&gt;]
+</code></pre>
+<p>Methods can be added to enumerations, and members can have their own
+attributes &ndash; see the documentation for details.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ErrorCode(Enum):
+    ACCESS = 0
+    WOULD_BLOCK = 1
+    ALREADY = 2
+    BAD_DESCRIPTOR = 3
+    BUSY = 4
+    DEADLOCK = 5
+    QUOTA = 6
+    EXIST = 7
+    FILE_TOO_LARGE = 8
+    ILLEGAL_BYTE_SEQUENCE = 9
+    IN_PROGRESS = 10
+    INTERRUPTED = 11
+    INVALID = 12
+    IO = 13
+    IS_DIRECTORY = 14
+    LOOP = 15
+    TOO_MANY_LINKS = 16
+    MESSAGE_SIZE = 17
+    NAME_TOO_LONG = 18
+    NO_DEVICE = 19
+    NO_ENTRY = 20
+    NO_LOCK = 21
+    INSUFFICIENT_MEMORY = 22
+    INSUFFICIENT_SPACE = 23
+    NOT_DIRECTORY = 24
+    NOT_EMPTY = 25
+    NOT_RECOVERABLE = 26
+    UNSUPPORTED = 27
+    NO_TTY = 28
+    NO_SUCH_DEVICE = 29
+    OVERFLOW = 30
+    NOT_PERMITTED = 31
+    PIPE = 32
+    READ_ONLY = 33
+    INVALID_SEEK = 34
+    TEXT_FILE_BUSY = 35
+    CROSS_DEVICE = 36</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.ACCESS"><code class="name">var <span class="ident">ACCESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.ALREADY"><code class="name">var <span class="ident">ALREADY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.BAD_DESCRIPTOR"><code class="name">var <span class="ident">BAD_DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.BUSY"><code class="name">var <span class="ident">BUSY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.CROSS_DEVICE"><code class="name">var <span class="ident">CROSS_DEVICE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.DEADLOCK"><code class="name">var <span class="ident">DEADLOCK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.EXIST"><code class="name">var <span class="ident">EXIST</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.FILE_TOO_LARGE"><code class="name">var <span class="ident">FILE_TOO_LARGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.ILLEGAL_BYTE_SEQUENCE"><code class="name">var <span class="ident">ILLEGAL_BYTE_SEQUENCE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.INSUFFICIENT_MEMORY"><code class="name">var <span class="ident">INSUFFICIENT_MEMORY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.INSUFFICIENT_SPACE"><code class="name">var <span class="ident">INSUFFICIENT_SPACE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.INTERRUPTED"><code class="name">var <span class="ident">INTERRUPTED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.INVALID"><code class="name">var <span class="ident">INVALID</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.INVALID_SEEK"><code class="name">var <span class="ident">INVALID_SEEK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.IN_PROGRESS"><code class="name">var <span class="ident">IN_PROGRESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.IO"><code class="name">var <span class="ident">IO</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.IS_DIRECTORY"><code class="name">var <span class="ident">IS_DIRECTORY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.LOOP"><code class="name">var <span class="ident">LOOP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.MESSAGE_SIZE"><code class="name">var <span class="ident">MESSAGE_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NAME_TOO_LONG"><code class="name">var <span class="ident">NAME_TOO_LONG</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NOT_DIRECTORY"><code class="name">var <span class="ident">NOT_DIRECTORY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NOT_EMPTY"><code class="name">var <span class="ident">NOT_EMPTY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NOT_PERMITTED"><code class="name">var <span class="ident">NOT_PERMITTED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NOT_RECOVERABLE"><code class="name">var <span class="ident">NOT_RECOVERABLE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NO_DEVICE"><code class="name">var <span class="ident">NO_DEVICE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NO_ENTRY"><code class="name">var <span class="ident">NO_ENTRY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NO_LOCK"><code class="name">var <span class="ident">NO_LOCK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NO_SUCH_DEVICE"><code class="name">var <span class="ident">NO_SUCH_DEVICE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NO_TTY"><code class="name">var <span class="ident">NO_TTY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.OVERFLOW"><code class="name">var <span class="ident">OVERFLOW</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.PIPE"><code class="name">var <span class="ident">PIPE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.QUOTA"><code class="name">var <span class="ident">QUOTA</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.READ_ONLY"><code class="name">var <span class="ident">READ_ONLY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.TEXT_FILE_BUSY"><code class="name">var <span class="ident">TEXT_FILE_BUSY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.TOO_MANY_LINKS"><code class="name">var <span class="ident">TOO_MANY_LINKS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.UNSUPPORTED"><code class="name">var <span class="ident">UNSUPPORTED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.WOULD_BLOCK"><code class="name">var <span class="ident">WOULD_BLOCK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.Filesystem"><code class="flex name class">
+<span>class <span class="ident">Filesystem</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for protocol classes.</p>
+<p>Protocol classes are defined as::</p>
+<pre><code>class Proto(Protocol):
+    def meth(self) -&gt; int:
+        ...
+</code></pre>
+<p>Such classes are primarily used with static type checkers that recognize
+structural subtyping (static duck-typing), for example::</p>
+<pre><code>class C:
+    def meth(self) -&gt; int:
+        return 0
+
+def func(x: Proto) -&gt; int:
+    return x.meth()
+
+func(C())  # Passes static type check
+</code></pre>
+<p>See PEP 544 for details. Protocol classes decorated with
+@typing.runtime_checkable act as simple-minded runtime protocols that check
+only the presence of given attributes, ignoring their type signatures.
+Protocol classes can be generic, they are defined as::</p>
+<pre><code>class GenProto(Protocol[T]):
+    def meth(self) -&gt; T:
+        ...
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Filesystem(Protocol):
+    @abstractmethod
+    def write_via_stream(self, this: Descriptor, offset: Filesize) -&gt; Result[OutputStream, ErrorCode]:
+        raise NotImplementedError
+    @abstractmethod
+    def append_via_stream(self, this: Descriptor) -&gt; Result[OutputStream, ErrorCode]:
+        raise NotImplementedError
+    @abstractmethod
+    def get_type(self, this: Descriptor) -&gt; Result[DescriptorType, ErrorCode]:
+        raise NotImplementedError
+    @abstractmethod
+    def drop_descriptor(self, this: Descriptor) -&gt; None:
+        raise NotImplementedError</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>wasmtime.bindgen.WasiFilesystem</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.Filesystem.append_via_stream"><code class="name flex">
+<span>def <span class="ident">append_via_stream</span></span>(<span>self, this: int) ‑> Union[<a title="wasmtime.bindgen.generated.types.Ok" href="../types.html#wasmtime.bindgen.generated.types.Ok">Ok</a>[int], <a title="wasmtime.bindgen.generated.types.Err" href="../types.html#wasmtime.bindgen.generated.types.Err">Err</a>[<a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode">ErrorCode</a>]]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abstractmethod
+def append_via_stream(self, this: Descriptor) -&gt; Result[OutputStream, ErrorCode]:
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.Filesystem.drop_descriptor"><code class="name flex">
+<span>def <span class="ident">drop_descriptor</span></span>(<span>self, this: int) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abstractmethod
+def drop_descriptor(self, this: Descriptor) -&gt; None:
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.Filesystem.get_type"><code class="name flex">
+<span>def <span class="ident">get_type</span></span>(<span>self, this: int) ‑> Union[<a title="wasmtime.bindgen.generated.types.Ok" href="../types.html#wasmtime.bindgen.generated.types.Ok">Ok</a>[<a title="wasmtime.bindgen.generated.imports.filesystem.DescriptorType" href="#wasmtime.bindgen.generated.imports.filesystem.DescriptorType">DescriptorType</a>], <a title="wasmtime.bindgen.generated.types.Err" href="../types.html#wasmtime.bindgen.generated.types.Err">Err</a>[<a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode">ErrorCode</a>]]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abstractmethod
+def get_type(self, this: Descriptor) -&gt; Result[DescriptorType, ErrorCode]:
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="wasmtime.bindgen.generated.imports.filesystem.Filesystem.write_via_stream"><code class="name flex">
+<span>def <span class="ident">write_via_stream</span></span>(<span>self, this: int, offset: int) ‑> Union[<a title="wasmtime.bindgen.generated.types.Ok" href="../types.html#wasmtime.bindgen.generated.types.Ok">Ok</a>[int], <a title="wasmtime.bindgen.generated.types.Err" href="../types.html#wasmtime.bindgen.generated.types.Err">Err</a>[<a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode">ErrorCode</a>]]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abstractmethod
+def write_via_stream(self, this: Descriptor, offset: Filesize) -&gt; Result[OutputStream, ErrorCode]:
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="wasmtime.bindgen.generated.imports" href="index.html">wasmtime.bindgen.generated.imports</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="wasmtime.bindgen.generated.imports.filesystem.DescriptorType" href="#wasmtime.bindgen.generated.imports.filesystem.DescriptorType">DescriptorType</a></code></h4>
+<ul class="two-column">
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.BLOCK_DEVICE" href="#wasmtime.bindgen.generated.imports.filesystem.DescriptorType.BLOCK_DEVICE">BLOCK_DEVICE</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.CHARACTER_DEVICE" href="#wasmtime.bindgen.generated.imports.filesystem.DescriptorType.CHARACTER_DEVICE">CHARACTER_DEVICE</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.DIRECTORY" href="#wasmtime.bindgen.generated.imports.filesystem.DescriptorType.DIRECTORY">DIRECTORY</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.FIFO" href="#wasmtime.bindgen.generated.imports.filesystem.DescriptorType.FIFO">FIFO</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.REGULAR_FILE" href="#wasmtime.bindgen.generated.imports.filesystem.DescriptorType.REGULAR_FILE">REGULAR_FILE</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.SOCKET" href="#wasmtime.bindgen.generated.imports.filesystem.DescriptorType.SOCKET">SOCKET</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.SYMBOLIC_LINK" href="#wasmtime.bindgen.generated.imports.filesystem.DescriptorType.SYMBOLIC_LINK">SYMBOLIC_LINK</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.DescriptorType.UNKNOWN" href="#wasmtime.bindgen.generated.imports.filesystem.DescriptorType.UNKNOWN">UNKNOWN</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode">ErrorCode</a></code></h4>
+<ul class="">
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.ACCESS" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.ACCESS">ACCESS</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.ALREADY" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.ALREADY">ALREADY</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.BAD_DESCRIPTOR" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.BAD_DESCRIPTOR">BAD_DESCRIPTOR</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.BUSY" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.BUSY">BUSY</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.CROSS_DEVICE" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.CROSS_DEVICE">CROSS_DEVICE</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.DEADLOCK" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.DEADLOCK">DEADLOCK</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.EXIST" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.EXIST">EXIST</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.FILE_TOO_LARGE" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.FILE_TOO_LARGE">FILE_TOO_LARGE</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.ILLEGAL_BYTE_SEQUENCE" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.ILLEGAL_BYTE_SEQUENCE">ILLEGAL_BYTE_SEQUENCE</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.INSUFFICIENT_MEMORY" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.INSUFFICIENT_MEMORY">INSUFFICIENT_MEMORY</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.INSUFFICIENT_SPACE" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.INSUFFICIENT_SPACE">INSUFFICIENT_SPACE</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.INTERRUPTED" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.INTERRUPTED">INTERRUPTED</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.INVALID" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.INVALID">INVALID</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.INVALID_SEEK" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.INVALID_SEEK">INVALID_SEEK</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.IN_PROGRESS" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.IN_PROGRESS">IN_PROGRESS</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.IO" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.IO">IO</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.IS_DIRECTORY" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.IS_DIRECTORY">IS_DIRECTORY</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.LOOP" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.LOOP">LOOP</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.MESSAGE_SIZE" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.MESSAGE_SIZE">MESSAGE_SIZE</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NAME_TOO_LONG" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NAME_TOO_LONG">NAME_TOO_LONG</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NOT_DIRECTORY" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NOT_DIRECTORY">NOT_DIRECTORY</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NOT_EMPTY" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NOT_EMPTY">NOT_EMPTY</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NOT_PERMITTED" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NOT_PERMITTED">NOT_PERMITTED</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NOT_RECOVERABLE" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NOT_RECOVERABLE">NOT_RECOVERABLE</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NO_DEVICE" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NO_DEVICE">NO_DEVICE</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NO_ENTRY" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NO_ENTRY">NO_ENTRY</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NO_LOCK" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NO_LOCK">NO_LOCK</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NO_SUCH_DEVICE" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NO_SUCH_DEVICE">NO_SUCH_DEVICE</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NO_TTY" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.NO_TTY">NO_TTY</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.OVERFLOW" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.OVERFLOW">OVERFLOW</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.PIPE" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.PIPE">PIPE</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.QUOTA" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.QUOTA">QUOTA</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.READ_ONLY" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.READ_ONLY">READ_ONLY</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.TEXT_FILE_BUSY" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.TEXT_FILE_BUSY">TEXT_FILE_BUSY</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.TOO_MANY_LINKS" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.TOO_MANY_LINKS">TOO_MANY_LINKS</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.UNSUPPORTED" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.UNSUPPORTED">UNSUPPORTED</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.ErrorCode.WOULD_BLOCK" href="#wasmtime.bindgen.generated.imports.filesystem.ErrorCode.WOULD_BLOCK">WOULD_BLOCK</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="wasmtime.bindgen.generated.imports.filesystem.Filesystem" href="#wasmtime.bindgen.generated.imports.filesystem.Filesystem">Filesystem</a></code></h4>
+<ul class="">
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.Filesystem.append_via_stream" href="#wasmtime.bindgen.generated.imports.filesystem.Filesystem.append_via_stream">append_via_stream</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.Filesystem.drop_descriptor" href="#wasmtime.bindgen.generated.imports.filesystem.Filesystem.drop_descriptor">drop_descriptor</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.Filesystem.get_type" href="#wasmtime.bindgen.generated.imports.filesystem.Filesystem.get_type">get_type</a></code></li>
+<li><code><a title="wasmtime.bindgen.generated.imports.filesystem.Filesystem.write_via_stream" href="#wasmtime.bindgen.generated.imports.filesystem.Filesystem.write_via_stream">write_via_stream</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
